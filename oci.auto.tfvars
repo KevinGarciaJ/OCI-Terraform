@@ -2,11 +2,11 @@
 # general oci parameters
 
 oci_compartment_id = "ocid1.compartment.oc1..aaaaaaaago6deoyb4hatbg62hvcr7o4xfv7wb7qxk4rfyxo72a5vrltw37tq"
+oci_region = "us-phoenix-1"
 
 
 # Para terraform cloud se comentan
 #oci_tenancy_id = "ocid1.tenancy.oc1..aaaaaaaakemfhg7ci3jnbje2fw4k75g7yjwkjeezwkqqk5fntti3ugtcz3hq"
-#oci_region = "us-phoenix-1"
 
 
 
