@@ -18,12 +18,12 @@ variable "oci_region" {
 
 
 
- variable "oci_tenancy_id"  { type = string }
+ variable "oci_tenancy_id"  { }
 
 
-variable "oci_user_ocid"     { type = string }
-variable "oci_private_key"   { type = string }
-variable "oci_fingerprint"   { type = string }
+variable "oci_user_ocid"     { }
+variable "oci_private_key"   {  }
+variable "oci_fingerprint"   { }
 
 
 
