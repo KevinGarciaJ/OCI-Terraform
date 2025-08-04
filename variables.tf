@@ -1,6 +1,6 @@
 
 
-# general oci parameters
+## general oci parameters
 
 variable "oci_compartment_id" {
   description = "compartment id where to create all resources"
