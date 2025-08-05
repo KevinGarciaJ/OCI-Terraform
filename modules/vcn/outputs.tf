@@ -1,4 +1,6 @@
-# VCN Outputs
+###############################################
+# OUTPUTS DE VCN
+###############################################
 output "oci_vcn_id" {
   description = "OCID de la VCN"
   value       = module.oci_vcn.vcn_id
@@ -9,25 +11,30 @@ output "oci_vcn_cidr" {
   value       = module.oci_vcn.vcn_all_attributes.cidr_blocks
 }
 
-# Internet Gateway Output
+###############################################
+# OUTPUTS DE GATEWAYS
+###############################################
+# Internet Gateway
 output "oci_internet_gateway_id" {
   description = "OCID del Internet Gateway"
   value       = module.oci_vcn.internet_gateway_id
 }
 
-# NAT Gateway Output
+# NAT Gateway
 output "oci_nat_gateway_id" {
   description = "OCID del NAT Gateway"
   value       = module.oci_vcn.nat_gateway_id
 }
 
-# Service Gateway Output
+# Service Gateway
 output "oci_service_gateway_id" {
   description = "OCID del Service Gateway"
   value       = module.oci_vcn.service_gateway_id
 }
 
-# Route Table Outputs
+###############################################
+# OUTPUTS DE TABLAS DE RUTAS
+###############################################
 output "oci_ig_route_id" {
   description = "OCID de la tabla de rutas del Internet Gateway"
   value       = module.oci_vcn.ig_route_id
@@ -38,16 +45,17 @@ output "oci_nat_route_id" {
   value       = module.oci_vcn.nat_route_id
 }
 
-# Security List Output
+###############################################
+# OUTPUTS DE LISTAS DE SEGURIDAD
+###############################################
 output "oci_security_list_id" {
   description = "OCID de la lista de seguridad de la instancia"
   value       = oci_core_security_list.oci_instance_security_list.id
 }
 
-
-
-
-# Outputs para las subnets creadas manualmente
+###############################################
+# OUTPUTS DE SUBNETS
+###############################################
 output "oci_subnet_public_1_id" {
   description = "ID de la subnet pública 1"
   value       = oci_core_subnet.oci_subnet_public_1.id
@@ -58,14 +66,9 @@ output "oci_subnet_private_1_id" {
   value       = oci_core_subnet.oci_subnet_private_1.id
 }
 
-
-
-# Output para el diagnóstico
-output "vcn_module_outputs" {
-  description = "Todos los outputs disponibles del módulo VCN"
-  value       = module.oci_vcn
-}
-
+###############################################
+# OUTPUTS DE DOMINIOS DE DISPONIBILIDAD
+###############################################
 output "availables_domains" {
   description = "Todos los dominios disponibles"
   value       = data.oci_identity_availability_domains.ads.availability_domains
@@ -76,7 +79,6 @@ output "availability_domain_names" {
   value       = [for ad in data.oci_identity_availability_domains.ads.availability_domains : ad.name]
 }
 
-# Si desea acceder a un AD específico (por ejemplo, el primero)
 output "first_availability_domain" {
   description = "Primer Availability Domain en la región"
   value       = data.oci_identity_availability_domains.ads.availability_domains[0]
@@ -87,4 +89,10 @@ output "first_availability_domain_name" {
   value       = data.oci_identity_availability_domains.ads.availability_domains[0].name
 }
 
-
+###############################################
+# OUTPUTS PARA DIAGNÓSTICO
+###############################################
+output "vcn_module_outputs" {
+  description = "Todos los outputs disponibles del módulo VCN"
+  value       = module.oci_vcn
+}
