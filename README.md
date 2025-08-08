@@ -1,8 +1,4 @@
-# OCI---Terraform
-
-
-
-# Documentación de Infraestructura Oracle Cloud (OCI) con Terraform
+# Oracle Cloud Infraestructure (OCI) con Terraform
 
 ## Descripción General
 
@@ -64,7 +60,6 @@ La configuración incluye reglas de seguridad para los siguientes puertos TCP:
 - 22 (SSH)
 - 80 (HTTP)
 - 443 (HTTPS)
-- 51820 (WireGuard VPN)
 - 1521 (Oracle Database)
 
 Y protocolos ICMP:
@@ -82,7 +77,7 @@ Y protocolos ICMP:
 
 ### DB System
 
-Configurado pero no desplegado en el estado actual. Se utilizaría la primera zona de disponibilidad (YINh:PHX-AD-1) y la subred pública pb-agarcia-1.
+Configurado pero no desplegado en el estado actual. Se utilizaría la primera zona de disponibilidad (YINh:PHX-AD-1) y la subred pública dtu_public_1.
 
 ## Uso
 
@@ -132,50 +127,19 @@ terraform destroy
 
 | Variable | Descripción | Valor Actual |
 |----------|-------------|--------------|
-| oci_adb_db_name_prod | Nombre de la base de datos | dtudb |
-| oci_adb_db_workload_prod | Tipo de workload | OLTP |
-| oci_adb_data_storage_size_in_gb_prod | Tamaño de almacenamiento | 20 |
-| oci_adb_is_dev_tier_prod | Usar tier de desarrollo | true |
+| oci_adb_db_name_dev_1 | Nombre de la base de datos | dtudb |
+| oci_adb_db_workload_dev_1 | Tipo de workload | OLTP |
+| oci_adb_data_storage_size_in_gb_dev_1 | Tamaño de almacenamiento | 20 |
+| oci_adb_is_dev_tier_dev_1 | Usar tier de desarrollo | true |
 
 
 ### Database System
 
 | Variable | Descripción | Valor Actual |
 |----------|-------------|--------------|
-| oci_dbs_dbname_prod | Nombre de la base de datos | datumdb1 |
-| oci_dbs_admin_password_prod | Password asignada para usuario SYS | N/A |
-| oci_ssh_public_key_path | Ruta de llave pública que permitirá la conexión con los db nodes | /home/agarcia/oci_instances.pub |
+| oci_dbs_dbname_dev_1 | Nombre de la base de datos | datumdb1 |
+| oci_dbs_admin_password_dev_1 | Password asignada para usuario SYS | N/A |
+| oci_ssh_public_key_path | Ruta de llave pública que permitirá la conexión con los db nodes | /home/.../oci_instances.pub |
 
 
 
-## Notas Importantes
-
-1. **Credenciales**: Por seguridad, cambia las contraseñas predeterminadas después del despliegue.
-2. **Backups**: La retención de backups está configurada a 60 días para la Autonomous Database.
-3. **SSH**: Asegúrate de que la ruta a la clave SSH pública sea correcta en tu entorno (`/home/agarcia/oci_instances.pub`).
-
-## Próximos Pasos
-
-1. Completar el despliegue del DB System si es necesario
-2. Configurar monitoreo y alertas
-3. Implementar políticas de backup adicionales si es necesario
-4. Configurar VPN para acceso seguro
-
-## Solución de Problemas
-
-Si encuentras problemas durante el despliegue:
-
-1. Verifica que tengas los permisos adecuados en el compartment
-2. Asegúrate de que las credenciales OCI estén correctamente configuradas
-3. Revisa los logs de Terraform para mensajes de error específicos
-4. Verifica la disponibilidad de recursos en la región seleccionada
-
-## Mantenimiento
-
-Para realizar actualizaciones:
-
-1. Modifica los archivos de configuración según sea necesario
-2. Ejecuta `terraform plan` para verificar los cambios
-3. Aplica los cambios con `terraform apply`
-
-Recuerda siempre hacer una copia de seguridad del estado de Terraform antes de realizar cambios importantes.

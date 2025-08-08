@@ -14,7 +14,7 @@ variable "oci_region" {
   default     = null
 }
 
-variable "oci_tenancy_id" { }
+variable "oci_tenancy_id" {}
 
 # variable "oci_user_ocid"     { }
 # variable "oci_private_key"   { }
@@ -26,7 +26,7 @@ variable "oci_label_prefix" {
   default     = "none"
 }
 
-variable "oci_freeform_tags" {
+variable "oci_freeform_tags_dev" {
   description = "Pares simples de clave-valor para etiquetar los recursos creados utilizando etiquetas de formato libre de OCI."
   type        = map(any)
   default = {
@@ -44,7 +44,7 @@ variable "oci_defined_tags" {
 
 
 ###############################################
-# PARÁMETROS DE VCN
+# PARÁMETROS DE VCN DESARROLLO
 ###############################################
 
 variable "oci_vcn_name" {
@@ -185,95 +185,95 @@ variable "oci_icmp_protocols" {
   type        = list(number)
 }
 
-###############################################
-# PARÁMETROS DE AUTONOMOUS DATABASE PRODUCCIÓN
-###############################################
+################################################
+# PARÁMETROS DE AUTONOMOUS DATABASE DESARROLLO 1
+################################################
 
-variable "oci_adb_db_name_prod" {
+variable "oci_adb_db_name_dev_1" {
   description = "ORACLE_SID de la base de datos"
   type        = string
   default     = "datumdb"
 }
 
-variable "oci_adb_admin_password_prod" {
+variable "oci_adb_admin_password_dev_1" {
   description = "Contraseña para la base de datos"
   type        = string
   default     = "Manager1##2Datum"
   validation {
-    condition = var.oci_adb_admin_password_prod == null ? true : (
-      length(var.oci_adb_admin_password_prod) >= 9 && 
-      length(regexall("[A-Z]", var.oci_adb_admin_password_prod)) >= 2 && 
-      length(regexall("[0-9]", var.oci_adb_admin_password_prod)) >= 2 && 
-      length(regexall("[#_-]", var.oci_adb_admin_password_prod)) >= 2
+    condition = var.oci_adb_admin_password_dev_1 == null ? true : (
+      length(var.oci_adb_admin_password_dev_1) >= 9 &&
+      length(regexall("[A-Z]", var.oci_adb_admin_password_dev_1)) >= 2 &&
+      length(regexall("[0-9]", var.oci_adb_admin_password_dev_1)) >= 2 &&
+      length(regexall("[#_-]", var.oci_adb_admin_password_dev_1)) >= 2
     )
     error_message = "La contraseña debe tener al menos 9 caracteres, 2 letras mayúsculas, 2 números y 2 caracteres especiales."
   }
 }
 
-variable "oci_adb_db_workload_prod" {
+variable "oci_adb_db_workload_dev_1" {
   description = "Tipo de carga para la base de datos"
   type        = string
   default     = "OLTP"
   validation {
-    condition     = contains(["OLTP", "DW", "AJD", "APEX "], var.oci_adb_db_workload_prod)
+    condition     = contains(["OLTP", "DW", "AJD", "APEX "], var.oci_adb_db_workload_dev_1)
     error_message = "Debe ser 'OLTP' o 'DW'."
   }
 }
 
-variable "oci_adb_compute_count_prod" {
+variable "oci_adb_compute_count_dev_1" {
   description = "Cantidad de ECPUs asignados a la base de datos"
   type        = number
   default     = 4 # Para developers debe ser 4 
 }
 
-variable "oci_adb_data_storage_size_in_gb_prod" {
+variable "oci_adb_data_storage_size_in_gb_dev_1" {
   description = "Espacio en GB asignado a la base de datos (Solo ECPU)"
   type        = number
   default     = 20 # Para developers debe ser 20 GB
 }
 
-variable "oci_adb_is_auto_scaling_enabled_prod" {
+variable "oci_adb_is_auto_scaling_enabled_dev_1" {
   description = "Autoescalado automático para la base de datos"
   type        = bool
   default     = false
 }
 
-variable "oci_adb_license_model_prod" {
+variable "oci_adb_license_model_dev_1" {
   description = "Tipo de licenciamiento para la base de datos"
   type        = string
   default     = "LICENSE_INCLUDED"
   validation {
-    condition     = contains(["BRING_YOUR_OWN_LICENSE", "LICENSE_INCLUDED"], var.oci_adb_license_model_prod)
+    condition     = contains(["BRING_YOUR_OWN_LICENSE", "LICENSE_INCLUDED"], var.oci_adb_license_model_dev_1)
     error_message = "Debe ser 'BRING_YOUR_OWN_LICENSE' o 'LICENSE_INCLUDED'."
   }
 }
 
-variable "oci_adb_is_dev_tier_prod" {
+variable "oci_adb_is_dev_tier_dev_1" {
   description = "La base de datos se encuentra en la capa gratuita"
   type        = bool
   default     = true
 }
 
 ###############################################
-# PARÁMETROS DE DBSYSTEM PRODUCCIÓN
+# PARÁMETROS DE DBSYSTEM DESARROLLO
 ###############################################
 
-variable "oci_dbs_dbname_prod" {
+variable "oci_dbs_dbname_dev_1" {
   description = "ORACLE_SID de la base de datos"
   type        = string
   default     = "datumdb1"
 }
 
-variable "oci_dbs_admin_password_prod" {
+variable "oci_dbs_admin_password_dev_1" {
   description = "Contraseña para la base de datos"
   type        = string
   default     = "Manager1##2Datum"
   validation {
-    condition = var.oci_dbs_admin_password_prod == null ? true : (
-      length(var.oci_dbs_admin_password_prod) >= 9 && 
-      length(regexall("[A-Z]", var.oci_dbs_admin_password_prod)) >= 2 && 
-      length(regexall("[0-9]", var.oci_dbs_admin_password_prod)) >= 2 && 
-      length(regexall("[#_-]", var.oci_dbs_admin_password_prod)) >= 2
+    condition = var.oci_dbs_admin_password_dev_1 == null ? true : (
+      length(var.oci_dbs_admin_password_prod) >= 9 &&
+      length(regexall("[A-Z]", var.oci_dbs_admin_password_dev_1)) >= 2 &&
+      length(regexall("[0-9]", var.oci_dbs_admin_password_dev_1)) >= 2 &&
+      length(regexall("[#_-]", var.oci_dbs_admin_password_dev_1)) >= 2
     )
     error_message = "La contraseña debe tener al menos 9 caracteres, 2 letras mayúsculas, 2 números y 2 caracteres especiales."
   }
@@ -282,4 +282,78 @@ variable "oci_dbs_admin_password_prod" {
 variable "oci_ssh_public_key_path" {
   description = "Ruta al archivo de clave pública SSH para acceder a la instancia"
   type        = string
+}
+
+
+
+
+
+
+################################################
+# PARÁMETROS DE AUTONOMOUS DATABASE DESARROLLO 2 
+################################################
+
+variable "oci_adb_db_name_dev_2" {
+  description = "ORACLE_SID de la base de datos"
+  type        = string
+  default     = "conferencia"
+}
+
+variable "oci_adb_admin_password_dev_2" {
+  description = "Contraseña para la base de datos"
+  type        = string
+  default     = "Manager1##2Conferencia"
+  validation {
+    condition = var.oci_adb_admin_password_dev_2 == null ? true : (
+      length(var.oci_adb_admin_password_dev_2) >= 9 &&
+      length(regexall("[A-Z]", var.oci_adb_admin_password_dev_2)) >= 2 &&
+      length(regexall("[0-9]", var.oci_adb_admin_password_dev_2)) >= 2 &&
+      length(regexall("[#_-]", var.oci_adb_admin_password_dev_2)) >= 2
+    )
+    error_message = "La contraseña debe tener al menos 9 caracteres, 2 letras mayúsculas, 2 números y 2 caracteres especiales."
+  }
+}
+
+variable "oci_adb_db_workload_dev_2" {
+  description = "Tipo de carga para la base de datos"
+  type        = string
+  default     = "OLTP"
+  validation {
+    condition     = contains(["OLTP", "DW", "AJD", "APEX "], var.oci_adb_db_workload_dev_2)
+    error_message = "Debe ser 'OLTP' o 'DW'."
+  }
+}
+
+variable "oci_adb_compute_count_dev_2" {
+  description = "Cantidad de ECPUs asignados a la base de datos"
+  type        = number
+  default     = 4 # Para developers debe ser 4 
+}
+
+variable "oci_adb_data_storage_size_in_gb_dev_2" {
+  description = "Espacio en GB asignado a la base de datos (Solo ECPU)"
+  type        = number
+  default     = 20 # Para developers debe ser 20 GB
+}
+
+variable "oci_adb_is_auto_scaling_enabled_dev_2" {
+  description = "Autoescalado automático para la base de datos"
+  type        = bool
+  default     = false
+}
+
+variable "oci_adb_license_model_dev_2" {
+  description = "Tipo de licenciamiento para la base de datos"
+  type        = string
+  default     = "LICENSE_INCLUDED"
+  validation {
+    condition     = contains(["BRING_YOUR_OWN_LICENSE", "LICENSE_INCLUDED"], var.oci_adb_license_model_dev_2)
+    error_message = "Debe ser 'BRING_YOUR_OWN_LICENSE' o 'LICENSE_INCLUDED'."
+  }
+}
+
+variable "oci_adb_is_dev_tier_dev_2" {
+  description = "La base de datos se encuentra en la capa gratuita"
+  type        = bool
+  default     = true
 }

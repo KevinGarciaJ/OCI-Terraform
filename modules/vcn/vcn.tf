@@ -1,10 +1,10 @@
 ###############################################
-# LISTA DE SEGURIDAD PERSONALIZADA PARA INSTANCIAS
+# LISTA DE SEGURIDAD PERSONALIZADA
 ###############################################
 resource "oci_core_security_list" "oci_instance_security_list" {
   compartment_id = var.oci_compartment_id
   vcn_id         = module.oci_vcn.vcn_id
-  display_name   = "agarcia-instance-security-list"
+  display_name   = "datum-tf-security-list"
 
   # Listado de puertos TCP
   dynamic "ingress_security_rules" {
@@ -16,19 +16,6 @@ resource "oci_core_security_list" "oci_instance_security_list" {
       tcp_options {
         min = ingress_security_rules.value
         max = ingress_security_rules.value
-      }
-    }
-  }
-
-  # Reglas ICMP
-  dynamic "ingress_security_rules" {
-    for_each = var.oci_icmp_protocols
-    content {
-      protocol    = "1" # ICMP
-      source      = "0.0.0.0/0"
-      stateless   = false
-      icmp_options {
-        type = ingress_security_rules.value
       }
     }
   }
@@ -101,7 +88,7 @@ data "oci_identity_availability_domains" "ads" {
 resource "oci_core_route_table" "private_route_table_vpn" {
   compartment_id = var.oci_compartment_id
   vcn_id         = module.oci_vcn.vcn_id
-  display_name   = "agarcia-private-vpn-route-table"
+  display_name   = "datum-tf-private-rt"
 
   # Mantener la ruta original hacia el NAT Gateway para tráfico general a Internet
   route_rules {
