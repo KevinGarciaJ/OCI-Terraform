@@ -270,7 +270,7 @@ variable "oci_dbs_admin_password_dev_1" {
   default     = "Manager1##2Datum"
   validation {
     condition = var.oci_dbs_admin_password_dev_1 == null ? true : (
-      length(var.oci_dbs_admin_password_prod) >= 9 &&
+      length(var.oci_dbs_admin_password_dev_1) >= 9 &&
       length(regexall("[A-Z]", var.oci_dbs_admin_password_dev_1)) >= 2 &&
       length(regexall("[0-9]", var.oci_dbs_admin_password_dev_1)) >= 2 &&
       length(regexall("[#_-]", var.oci_dbs_admin_password_dev_1)) >= 2

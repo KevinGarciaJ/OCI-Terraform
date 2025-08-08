@@ -51,15 +51,15 @@ oci_subnets = {
 oci_ingress_ports_list_tcp = [22, 80, 443, 1521]
 oci_icmp_protocols         = [3, 8]
 
-###############################################
-# PARÁMETROS DE AUTONOMOUS DATABASE PRODUCCIÓN
-###############################################
+################################################
+# PARÁMETROS DE AUTONOMOUS DATABASE DESARROLLO 1
+################################################
 oci_adb_db_name_dev_1                  = "dtudb"
 oci_adb_db_workload_dev_1              = "OLTP"
 oci_adb_data_storage_size_in_gb_dev_1 = 20
 
 
 ###############################################
-# PARÁMETROS DE DBSYSTEM PRODUCCIÓN
+# PARÁMETROS DE DBSYSTEM DESARROLLO 1
 ###############################################
 oci_ssh_public_key_path = "/home/agarcia/oci_instances.pub"
