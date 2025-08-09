@@ -88,11 +88,3 @@ output "first_availability_domain_name" {
   description = "Nombre del primer Availability Domain en la región"
   value       = data.oci_identity_availability_domains.ads.availability_domains[0].name
 }
-
-###############################################
-# OUTPUTS PARA DIAGNÓSTICO
-###############################################
-output "vcn_module_outputs" {
-  description = "Todos los outputs disponibles del módulo VCN"
-  value       = module.oci_vcn
-}
