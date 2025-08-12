@@ -26,6 +26,15 @@ variable "oci_dbs_ssh_public_key_path" {
   type        = string
 }
 
+variable "oci_dbs_freeform_tags" {
+  description = "Pares simples de clave-valor para etiquetar los recursos creados utilizando etiquetas de formato libre de OCI."
+  type        = map(any)
+  default = {
+    terraformed = "Por favor no editar manualmente"
+    module      = "vcn/oci"
+  }
+}
+
 ###############################################
 # CONFIGURACIÓN DE LA INSTANCIA
 ###############################################

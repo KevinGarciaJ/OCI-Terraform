@@ -5,6 +5,8 @@ resource "oci_database_db_system" "test_db_system" {
     display_name                = var.oci_dbs_display_name
     hostname                    = var.oci_dbs_hostname
     shape                       = var.oci_dbs_shape
+    freeform_tags = var.oci_dbs_freeform_tags
+
     
     #################################################
     # UBICACIÓN Y RED

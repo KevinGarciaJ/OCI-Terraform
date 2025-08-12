@@ -6,6 +6,7 @@ resource "oci_database_autonomous_database" "datum_adb" {
     db_name                  = var.oci_adb_db_name
     admin_password           = var.oci_adb_admin_password
     db_workload              = var.oci_adb_db_workload
+    freeform_tags = var.oci_adb_freeform_tags
     
     #################################################
     # MODELO DE CÓMPUTO Y RECURSOS

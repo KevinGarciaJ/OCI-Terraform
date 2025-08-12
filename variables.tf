@@ -31,7 +31,7 @@ variable "oci_freeform_tags_dev" {
   type        = map(any)
   default = {
     terraformed = "Por favor no editar manualmente"
-    module      = "oracle-terraform-modules/vcn/oci"
+    module      = "vcn/oci"
   }
 }
 
