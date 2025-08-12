@@ -38,13 +38,13 @@ oci_subnets = {
     name       = "dtu_public_1",
     cidr_block = "10.12.4.0/24",
     type       = "public",
-    dns_label  = "dtu_public_1" # Esto habilita DNS para la subnet
+    dns_label  = "dtupublic1" # Esto habilita DNS para la subnet
   }
   sub2 = {
     name       = "dtu_private_1",
     cidr_block = "10.12.5.0/24",
     type       = "private",
-    dns_label  = "dtu_private_1" # Esto habilita DNS para la subnet
+    dns_label  = "dtuprivate1" # Esto habilita DNS para la subnet
   }
 }
 

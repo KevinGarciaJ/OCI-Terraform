@@ -48,7 +48,7 @@ variable "oci_defined_tags" {
 ###############################################
 
 variable "oci_vcn_name" {
-  description = "nombre amigable para usar en la VCN que se anexará al prefijo de etiqueta"
+  description = "Nombre para usar en la VCN que se anexará al prefijo de etiqueta"
   type        = string
   default     = "vcn"
   validation {
@@ -81,7 +81,7 @@ variable "oci_enable_ipv6" {
 }
 
 variable "oci_lockdown_default_seclist" {
-  description = "si se deben eliminar todas las reglas de seguridad predeterminadas de la Lista de Seguridad Predeterminada de la VCN"
+  description = "Si se deben eliminar todas las reglas de seguridad predeterminadas de la Lista de Seguridad Predeterminada de la VCN"
   default     = true
   type        = bool
 }
@@ -91,13 +91,13 @@ variable "oci_lockdown_default_seclist" {
 ###############################################
 
 variable "oci_create_internet_gateway" {
-  description = "si se debe crear el gateway de internet en la VCN. Si se establece en verdadero, crea un Gateway de Internet."
+  description = "Si se debe crear el Internet Gateway en la VCN. Si se establece en verdadero, crea un Internet Gateway."
   default     = false
   type        = bool
 }
 
 variable "oci_internet_gateway_display_name" {
-  description = "(Actualizable) Nombre del Gateway de Internet. No tiene que ser único."
+  description = "(Actualizable) Nombre del Internet Gateway. No tiene que ser único."
   type        = string
   default     = "internet-gateway"
 
@@ -108,19 +108,19 @@ variable "oci_internet_gateway_display_name" {
 }
 
 variable "oci_internet_gateway_route_rules" {
-  description = "(Actualizable) Lista de reglas de enrutamiento para añadir a la Tabla de Rutas del Gateway de Internet"
+  description = "(Actualizable) Lista de reglas de enrutamiento para añadir a la Tabla de Rutas del Internet Gateway"
   type        = list(map(string))
   default     = null
 }
 
 variable "oci_create_nat_gateway" {
-  description = "si se debe crear un gateway NAT en la VCN. Si se establece en verdadero, crea un gateway NAT."
+  description = "Si se debe crear un NAT Gateway en la VCN. Si se establece en verdadero, crea un NAT Gateway."
   default     = false
   type        = bool
 }
 
 variable "oci_nat_gateway_display_name" {
-  description = "(Actualizable) Nombre del Gateway NAT. No tiene que ser único."
+  description = "(Actualizable) Nombre del NAT Gateway. No tiene que ser único."
   type        = string
   default     = "nat-gateway"
 
@@ -131,25 +131,25 @@ variable "oci_nat_gateway_display_name" {
 }
 
 variable "oci_nat_gateway_public_ip_id" {
-  description = "OCID de la dirección IP reservada para el gateway NAT. La dirección IP pública reservada debe crearse manualmente."
+  description = "OCID de la dirección IP reservada para el NAT Gateway. La dirección IP pública reservada debe crearse manualmente."
   default     = "none"
   type        = string
 }
 
 variable "oci_nat_gateway_route_rules" {
-  description = "(Actualizable) lista de reglas de enrutamiento para añadir a la Tabla de Rutas del Gateway NAT"
+  description = "(Actualizable) lista de reglas de enrutamiento para añadir a la Tabla de Rutas del NAT Gateway"
   type        = list(map(string))
   default     = null
 }
 
 variable "oci_create_service_gateway" {
-  description = "si se debe crear un gateway de servicio. Si se establece en verdadero, crea un gateway de servicio."
+  description = "Si se debe crear un Service Gateway. Si se establece en verdadero, crea un Service Gateway."
   default     = false
   type        = bool
 }
 
 variable "oci_service_gateway_display_name" {
-  description = "(Actualizable) Nombre del Gateway de Servicio. No tiene que ser único."
+  description = "(Actualizable) Nombre del Service Gateway. No tiene que ser único."
   type        = string
   default     = "service-gateway"
 

@@ -2,17 +2,17 @@
 # CONFIGURACIÓN BÁSICA DE DBSYSTEM
 ###############################################
 variable "oci_dbs_compartment_id" {
-  description = "ID del compartimento donde se crearán todos los recursos"
+  description = "Id del compartment donde se crearán todos los recursos"
   type        = string
 }
 
 variable "oci_dbs_availability_domain_name" {
-  description = "Nombre del dominio de disponibilidad donde se desplegará el sistema"
+  description = "Nombre del availability domain donde se desplegará el sistema"
   type        = string
 }
 
 variable "oci_dbs_subnet_id" {
-  description = "ID de la subnet donde se desplegará el sistema"
+  description = "Id de la subnet donde se desplegará el sistema"
   type        = string
 }
 
@@ -36,13 +36,13 @@ variable "oci_dbs_display_name" {
 }
 
 variable "oci_dbs_hostname" {
-  description = "Nombre de host para la instancia"
+  description = "Hostname para la instancia"
   type        = string
   default     = "mydbhost"
 }
 
 variable "oci_dbs_shape" {
-  description = "Shape de la instancia de computación"
+  description = "Shape del compute instance"
   type        = string
   default     = "VM.Standard2.2"
 }
@@ -57,7 +57,7 @@ variable "oci_dbs_cpu_core_count" {
 # CONFIGURACIÓN DE LA BASE DE DATOS
 ###############################################
 variable "oci_dbs_database_edition" {
-  description = "Tipo de edición para la base de datos"
+  description = "Edición de base de datos"
   type        = string
   default     = "ENTERPRISE_EDITION"
   validation {

@@ -9,7 +9,6 @@ module "vcn_dev" {
   oci_tenancy_id     = var.oci_tenancy_id
   oci_label_prefix   = var.oci_label_prefix
   oci_freeform_tags = var.oci_freeform_tags_dev
-  oci_defined_tags   = var.oci_defined_tags
 
   # VCN parameters
   oci_vcn_name                 = var.oci_vcn_name
@@ -81,3 +80,30 @@ module "dbsystem_dev" {
 
   depends_on = [module.vcn_dev]
 }
+
+
+
+
+#################################################
+# MÓDULO DE AUTONOMOUS DATABASE - DESARROLLO 2
+#################################################
+# module "adb_qa" {
+#   source = "./modules/adb"
+
+#   # Database configuration
+#   oci_adb_compartment_id = var.oci_compartment_id
+#   oci_adb_db_name        = var.oci_adb_db_name_dev_2
+#   oci_adb_admin_password = var.oci_adb_admin_password_dev_2
+#   oci_adb_db_workload    = var.oci_adb_db_workload_dev_2
+
+#   # Resource allocation
+#   oci_adb_compute_count           = var.oci_adb_compute_count_dev_2
+#   oci_adb_data_storage_size_in_gb = var.oci_adb_data_storage_size_in_gb_dev_2
+#   oci_adb_is_auto_scaling_enabled = var.oci_adb_is_auto_scaling_enabled_dev_2
+
+#   # Licensing and tier
+#   oci_adb_license_model = var.oci_adb_license_model_dev_2
+#   oci_adb_is_dev_tier   = var.oci_adb_is_dev_tier_dev_2
+
+#   depends_on = [module.vcn_dev]
+# }

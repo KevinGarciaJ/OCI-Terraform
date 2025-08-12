@@ -2,7 +2,7 @@
 # CONFIGURACIÓN BÁSICA DE AUTONOMOUS DATABASE
 ###############################################
 variable "oci_adb_compartment_id" {
-  description = "compartment id where to create all resources"
+  description = "Id del compartment donde se crearán todos los recursos"
   type        = string
 }
 
@@ -78,7 +78,7 @@ variable "oci_adb_data_storage_size_in_tbs" {
 # CONFIGURACIÓN DE LICENCIAMIENTO Y NIVEL DE SERVICIO
 ###############################################
 variable "oci_adb_license_model" {
-  description = "Tipo de lincenciamiento para la base de datos"
+  description = "Tipo de licenciamiento para la base de datos"
   type        = string
   default     = "LICENSE_INCLUDED"
   validation {
